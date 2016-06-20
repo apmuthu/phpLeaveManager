@@ -19,7 +19,8 @@ PHP/MySQL/Adminer-Editor based online Leave Manager
 * Fill in your ````designations```` with it's ````employees````
 * Populate the Annual Opening ````balances```` of Leave
 * Fill in all ````leaves```` requested by the employees
-* No need to fill in Primary Key ID fields in Insert forms now
+* No need to fill in Primary Key ID fields in Insert forms
+* Records per page made user configurable
 
 ## Demo Data
 Here is some demo data to start testing the application

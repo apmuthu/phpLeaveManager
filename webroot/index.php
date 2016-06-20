@@ -8,6 +8,8 @@ define ('PHPLM_DBHOST',  'localhost');
 define ('PHPLM_DBUSER',  'root');
 define ('PHPLM_DBPASS',  '');
 define ('PHPLM_PERMKEY', '90e869455eb99f2d15dd8eb374972662'); // 32 char hex - change for each installation
+define ('PHPLM_PAGERECS', '|10|25|50'); // Must start with "|" for blank first element
+define ('PHPLM_PAGEDEFRECS', '25'); // Must be quoted
 
 function adminer_object() {
     // required to run any plugin
@@ -93,6 +95,16 @@ function adminer_object() {
 			}
 			return "";
 		}
+
+		function selectLimitProcess() {
+            return (isset($_GET["limit"]) ? $_GET["limit"] : PHPLM_PAGEDEFRECS);
+        }
+
+        function selectLimitPrint($limit) {
+            echo "<fieldset><legend>" . lang('Limit') . "</legend><div>"; // <div> for easy styling
+            echo html_select("limit", explode('|', PHPLM_PAGERECS), $limit);
+            echo "</div></fieldset>\n";
+        }
 
     }
     return new AdminerCustomization($plugins);
