@@ -69,3 +69,22 @@ CREATE TABLE `leaves` (
 INSERT INTO `login`(`id`,`login`,`password_sha1`) VALUES 
  (1,'admin',SHA1('pwd123'));
 
+/* Demo Data 
+INSERT INTO `designations`(`Designation`,`Category`) VALUES 
+ ('Director','A')
+,('Joint Director','A')
+,('Assistant Director','A')
+,('Deputy Director','A');
+
+INSERT INTO `employees`(`EmployeeID`,`Designation`,`Employee`,`InActive`) VALUES 
+ (1,'Director','Shiva S',0)
+,(2,'Joint Director','Vishnu L',0)
+,(3,'Deputy Director','Lakshmi V',0);
+
+INSERT INTO `balances`(`Year`,`EmployeeID`,`BalCL`,`BalEL`,`BalRH`,`BalML`) VALUES 
+ (2016,1,20,200,12,8);
+
+INSERT INTO `leaves`(`LeaveID`,`EmployeeID`,`AppliedDate`,`LeaveFrom`,`LeaveTill`,
+	`LeaveDays`,`LeaveType`,`IsVerified`,`IsApproved`,`Reason`) VALUES 
+ (1,1,'2016-06-01','2016-06-02','2016-06-07',4.0,'CL',1,1,'Visiting Relatives for quite a while');
+*/
