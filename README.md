@@ -12,6 +12,7 @@ PHP/MySQL/Adminer-Editor based online Leave Manager
 ## Installation
 * Upload the contents of ````webroot```` to your webroot or application folder
 * Create your database and it's tables from ````docs/phpLM.sql```` using your favourite MySQL client like [phpMyAdmin](http://ww.phpmyadmin.net), [SQLyog](http://www.webyog.com) or plain CLI
+* Setup the parameters in ````defines.php```` file
 
 ## Usage
 * Browse to your webroot or application folder
