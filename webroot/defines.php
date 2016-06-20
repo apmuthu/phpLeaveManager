@@ -10,5 +10,11 @@ define ('PHPLM_DBPASS',  '');
 define ('PHPLM_PERMKEY', '90e869455eb99f2d15dd8eb374972662'); // 32 char hex - change for each installation
 define ('PHPLM_PAGERECS', '|10|25|50'); // Must start with "|" for blank first element
 define ('PHPLM_PAGEDEFRECS', '25'); // Must be quoted
+define ('PHPLM_PDFPFX', 'phpLM_');
+
+function phplm_db_connect() {
+	$link = mysqli_connect(PHPLM_DBHOST, PHPLM_DBUSER, PHPLM_DBPASS, PHPLM_DBNAME);
+	return $link;
+}
 
 ?>

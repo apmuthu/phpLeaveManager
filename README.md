@@ -23,6 +23,9 @@ PHP/MySQL/Adminer-Editor based online Leave Manager
 * No need to fill in Primary Key ID fields in Insert forms
 * Records per page made user configurable
 * Limit which tables can be viewed
+* Verify the Leave Request
+* Approve the Leave Request
+* Output Leave Summary with balance leave left
 
 ## Demo Data
 Here is some demo data to start testing the application
@@ -37,9 +40,11 @@ INSERT INTO `employees`(`EmployeeID`,`Designation`,`Employee`,`InActive`) VALUES
  (1,'Director','Shiva S',0)
 ,(2,'Joint Director','Vishnu L',0)
 ,(3,'Deputy Director','Lakshmi V',0);
-````
 
-## To be done
-* Verify the Leave Request
-* Approve the Leave Request
-* Output Leave Summary with balance leave left
+INSERT INTO `balances`(`Year`,`EmployeeID`,`BalCL`,`BalEL`,`BalRH`,`BalML`) VALUES 
+ (2016,1,20,200,12,8);
+
+INSERT INTO `leaves`(`LeaveID`,`EmployeeID`,`AppliedDate`,`LeaveFrom`,`LeaveTill`,
+	`LeaveDays`,`LeaveType`,`IsVerified`,`IsApproved`,`Reason`) VALUES 
+ (1,1,'2016-06-01','2016-06-02','2016-06-07',4.0,'CL',1,1,'Visiting Relatives for quite a while');
+````

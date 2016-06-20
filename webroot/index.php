@@ -100,6 +100,11 @@ function adminer_object() {
             echo "</div></fieldset>\n";
         }
 
+		function selectLink($val, $field) {
+			if ($field['field'] == 'LeaveID' && $_GET['select'] == 'leaves' && $val !== NULL)
+				return 'leave_summary.php?select=leaves&leaveid='.$val;
+		}
+
     }
     return new AdminerCustomization($plugins);
 
