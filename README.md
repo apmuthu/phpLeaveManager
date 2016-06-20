@@ -21,6 +21,7 @@ PHP/MySQL/Adminer-Editor based online Leave Manager
 * Fill in all ````leaves```` requested by the employees
 * No need to fill in Primary Key ID fields in Insert forms
 * Records per page made user configurable
+* Limit which tables can be viewed
 
 ## Demo Data
 Here is some demo data to start testing the application

@@ -64,8 +64,12 @@ function adminer_object() {
 
 		function tableName($tableStatus) {
 			// tables without comments would return empty string and will be ignored by Adminer
-			return h($tableStatus["Comment"]);
-		}
+			$allowed_tables = Array('balances', 'designations', 'employees', 'leaves');
+			if (in_array($tableStatus["Name"], $allowed_tables))
+				return h($tableStatus["Comment"]);
+			else 
+				return '';
+			}
 
 		function fieldName($field, $order = 0) {
 			if ($order && preg_match('~_(md5|sha1)$~', $field["field"])) {
