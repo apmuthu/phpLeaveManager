@@ -69,6 +69,19 @@ function adminer_object() {
 			if ($order && preg_match('~_(md5|sha1)$~', $field["field"])) {
 				return ""; // hide hashes in select
 			}
+
+			// Hide AutoInc Primary keys during Insert
+			if (isset($_GET['edit'])) {
+				$hidePKfields = Array(
+					Array('htable' => 'employees', 'hfield' => 'EmployeeID')
+				  , Array('htable' => 'leaves', 'hfield' => 'LeaveID')
+				);
+				foreach ($hidePKfields as $val) {
+				if ($_GET['edit'] == $val['htable'] && $field['field'] == $val['hfield'] && !isset($_GET['where'][$val['hfield']]))
+					return "";
+				}
+			}
+
 			// display only column with comments, first 60 of them plus searched columns
 			if ($order < 60) {
 				return h($field["comment"]);
