@@ -113,4 +113,7 @@ function adminer_object() {
 // include original Adminer Editor
 include "./editor-4.2.5-mysql-en.php";
 
+echo '<br><br><br><br>';
+echo '<p> &nbsp; <a class="select" href="https://github.com/apmuthu/phpLeaveManager" target="blank">phpLM Home</a></p><br>';
+
 ?>
