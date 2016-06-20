@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_general_ci">phpLM</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="balances" view="colnames">
+<left>395</left>
+<top>3</top>
+<width>108</width>
+<height>160</height>
+<sql_create_table>CREATE TABLE `balances` (
+  `Year` int(11) NOT NULL COMMENT 'Year',
+  `EmployeeID` int(11) NOT NULL COMMENT 'Employee ID',
+  `BalCL` int(11) NOT NULL DEFAULT '0' COMMENT 'Balance CL',
+  `BalEL` int(11) NOT NULL DEFAULT '0' COMMENT 'Balance EL',
+  `BalRH` int(11) NOT NULL DEFAULT '0' COMMENT 'Balance RH',
+  `BalML` int(11) NOT NULL DEFAULT '0' COMMENT 'Balance ML',
+  PRIMARY KEY (`Year`,`EmployeeID`),
+  KEY `EmployeeID` (`EmployeeID`),
+  CONSTRAINT `balances_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Balance Leave'</sql_create_table>
+</table>
+<table name="designations" view="colnames">
+<left>32</left>
+<top>34</top>
+<width>105</width>
+<height>96</height>
+<sql_create_table>CREATE TABLE `designations` (
+  `Designation` varchar(60) NOT NULL COMMENT 'Designation',
+  `Category` char(1) DEFAULT NULL COMMENT 'Group',
+  PRIMARY KEY (`Designation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Designations'</sql_create_table>
+</table>
+<table name="employees" view="colnames">
+<left>196</left>
+<top>18</top>
+<width>108</width>
+<height>128</height>
+<sql_create_table>CREATE TABLE `employees` (
+  `EmployeeID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Employee ID',
+  `Designation` varchar(60) NOT NULL COMMENT 'Designation',
+  `Employee` varchar(60) NOT NULL COMMENT 'Employee Name',
+  `InActive` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'InActive',
+  PRIMARY KEY (`EmployeeID`),
+  KEY `Designation` (`Designation`),
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`Designation`) REFERENCES `designations` (`Designation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Employees'</sql_create_table>
+</table>
+<table name="leaves" view="colnames">
+<left>397</left>
+<top>174</top>
+<width>108</width>
+<height>224</height>
+<sql_create_table>CREATE TABLE `leaves` (
+  `LeaveID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Leave ID',
+  `EmployeeID` int(11) NOT NULL COMMENT 'Employee ID',
+  `AppliedDate` date DEFAULT NULL COMMENT 'Applied On Date',
+  `LeaveFrom` date NOT NULL COMMENT 'Leave From Date',
+  `LeaveTill` date DEFAULT NULL COMMENT 'Leave Till Date',
+  `LeaveDays` float(6,1) DEFAULT NULL COMMENT 'Leave Days',
+  `LeaveType` enum('AB','CL','EL','RH','ML','CCL','PL') NOT NULL DEFAULT 'AB' COMMENT 'Leave Type',
+  `IsVerified` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Verified',
+  `IsApproved` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Approved',
+  `Reason` varchar(255) DEFAULT NULL COMMENT 'Leave Reason',
+  PRIMARY KEY (`LeaveID`),
+  UNIQUE KEY `EmployeeDateIDX` (`EmployeeID`,`LeaveFrom`),
+  CONSTRAINT `leaves_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Leave List'</sql_create_table>
+</table>
+<table name="login" view="colnames">
+<left>30</left>
+<top>294</top>
+<width>126</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `password_sha1` char(40) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
