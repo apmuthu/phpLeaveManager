@@ -5,7 +5,7 @@ PHP/MySQL/Adminer-Editor based online Leave Manager
 * India specific terminology used for data content
 * Only English supported to keep the code simple and easy to underestand
 * [Adminer Editor v4.2.5](https://github.com/vrana/adminer/archive/v4.2.5.tar.gz) used for CRUD operations
-* Serves as a Tutorial for Adminer-Editor usage
+* Serves as a Tutorial for [Adminer Editor](https://www.adminer.org/editor/) usage
 * [Adminer Wiki](https://github.com/vrana/adminer/wiki/Technical-Wiki) serves as a Reference
 * Login Authentication notes are in ````docs/LoginNotes.md````
 
